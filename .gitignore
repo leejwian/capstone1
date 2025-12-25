@@ -1,0 +1,28 @@
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# env
+.venv/
+venv/
+env/
+conda/
+
+# data / outputs
+data/
+datasets/
+outputs/
+runs/
+logs/
+checkpoints/
+
+# model weights
+*.pt
+*.pth
+*.ckpt
+
+# archives
+*.zip
+*.tar
+*.tar.gz
