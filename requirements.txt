@@ -3,3 +3,4 @@ torch==2.2.2
 torchvision==0.17.2
 # NumPy 2.x can break torch wheels; stay on 1.x for compatibility.
 numpy<2
+gradio

@@ -47,9 +47,11 @@ def load_checkpoint(model: nn.Module, checkpoint: Optional[str]) -> nn.Module:
 
 
 def apply_pruning(model: nn.Module, amount: float) -> nn.Module:
+
+    amount = max(0, amount)
     if amount <= 0:
         return model
-
+    
     to_prune = []
     for module in model.modules():
         if isinstance(module, (nn.Conv2d, nn.Linear)):
@@ -63,6 +65,18 @@ def apply_pruning(model: nn.Module, amount: float) -> nn.Module:
         prune.remove(module, param_name)
 
     return model
+
+# module단위의 pruning을 위한 함수
+def apply_module_pruning(module:nn.Module, param_name:str, amount:float, method:str="l1"):
+    
+    if method=="l1":
+        prune.l1_unstructured(module, name=param_name, amount=amount)
+        prune.remove(module, param_name)
+    else:
+        #TODO pruning method 추가
+        pass
+    
+    return module
 
 
 def apply_quantization(model: nn.Module) -> nn.Module:
