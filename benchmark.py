@@ -10,7 +10,6 @@ from torchvision import datasets, models, transforms
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-
 def model_registry() -> Dict[str, Tuple]:
     return {
         "resnet18": (models.resnet18, getattr(models, "ResNet18_Weights", None)),
